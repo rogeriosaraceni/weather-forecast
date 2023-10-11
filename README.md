@@ -1,2 +1,2 @@
-# weather-forecast
-Weather forecast
+# Weather Forecast
+
