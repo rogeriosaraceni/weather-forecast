@@ -9,6 +9,9 @@ const icon = document.querySelector('[data-info="icon"]')
 const description = document.querySelector('[data-info="description"]')
 const humidity = document.querySelector('[data-info="humidity"]')
 
+document.querySelector('[data-input="city"]').value = ''
+icon.innerHTML = ''
+
 function showData(data) {
     console.log(data)
 
@@ -17,7 +20,8 @@ function showData(data) {
 
     description.innerText = `${data.weather[0].description}`
     humidity.innerText = `Umidade: ${data.main.humidity} %`
-    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+
+    icon.innerHTML = `<img alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
 }
 
 async function searchCity(inputCity) {
