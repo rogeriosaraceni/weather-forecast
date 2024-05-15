@@ -12,6 +12,12 @@ const humidity = document.querySelector('[data-info="humidity"]')
 document.querySelector('[data-input="city"]').value = ''
 icon.innerHTML = ''
 
+async function searchCity(inputCity) {
+    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${key}&lang=${lang}&units=${units}`)
+    .then(response => response.json())
+    showData(data)
+}
+
 function showData(data) {
     console.log(data)
 
@@ -22,12 +28,6 @@ function showData(data) {
     humidity.innerText = `Umidade: ${data.main.humidity} %`
 
     icon.innerHTML = `<img alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
-}
-
-async function searchCity(inputCity) {
-    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${key}&lang=${lang}&units=${units}`)
-    .then(response => response.json())
-    showData(data)
 }
 
 btnSearch.addEventListener('click', () => {
